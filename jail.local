@@ -7,3 +7,13 @@ logpath = /var/log/nginx/error.log
 findtime = 600
 bantime = 10800
 maxretry = 5
+
+[nginx-conn-limit]
+
+enabled = true
+filter = nginx-conn-limit
+action = iptables-multiport[name=ConnLimit, port="http,https", protocol=tcp]
+logpath = /var/log/nginx/error.log
+findtime = 300
+bantime = 10800
+maxretry = 5
